@@ -4,8 +4,11 @@
 
 
 
-$(function () {
 
+$(document).ready(function () {
+
+
+localStorage.setitem("")
 
 
   // TODO: Add a listener for click events on the save button. This code should
@@ -28,4 +31,14 @@ $(function () {
   // TODO: Add code to display the current date in the header of the page.
 });
 
-addEventListener.timeblock("click", );
+
+
+
+
+// <div id="hour-10" class="row time-block present">
+//         <div class="col-2 col-md-1 hour text-center py-3">10AM</div>
+//         <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
+//         <button class="btn saveBtn col-2 col-md-1" aria-label="save">
+//           <i class="fas fa-save" aria-hidden="true"></i>
+//         </button>
+//       </div>
