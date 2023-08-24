@@ -9,7 +9,7 @@ $(".saveBtn").on("click", function () {
 
 // After using $, 'this' becomes the button element. This enables DOM traversal to the sibling textArea element with class ".description", and the parent Div that has the "hour-x" id.
 
-console.log(this);
+
 
   // The value var is the description of the work that has to get done for that particular hour typed into the textArea. 
   var value = $(this).siblings(".description").val();
@@ -17,9 +17,11 @@ console.log(this);
 
   localStorage.setItem(time, value);
 
+$(".feedback").setInterval(() => {
+  
+}, 5000);
+
 })
-
-
 
 
 });
