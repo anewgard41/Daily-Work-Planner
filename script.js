@@ -17,11 +17,12 @@ $(document).ready(function () {
 
     // Feedback section of DOM given "show" class for 5 seconds using setTimeout.
 
-    $(".feedback").addClass("show");
+    $(".alert").addClass("show");
 
     setTimeout(function () {
 
-      $(".feedback").removeClass("show");
+      $(".alert").removeClass("show");
+
     }, 5000)
 
   })
