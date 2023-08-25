@@ -1,60 +1,73 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the ht
 
 $(document).ready(function () {
 
-  
-$(".saveBtn").on("click", function () { 
-
-// After using $, 'this' becomes the button element. This enables DOM traversal to the sibling textArea element with class ".description", and the parent Div that has the "hour-x" id.
+  setInterval(clockTick, 1000)
 
 
+  $(".saveBtn").on("click", function () {
 
-  // The value var is the description of the work that has to get done for that particular hour typed into the textArea. 
-  var value = $(this).siblings(".description").val();
-  var time = $(this).parent().attr("id");
+    // After using $, 'this' becomes the button element. This enables DOM traversal to the sibling textArea element with class ".description", and the parent Div that has the "hour-x" id.
 
-  localStorage.setItem(time, value);
+    // The value var is the description of the work in the textArea. Variables are declared and set in localStorage. 
 
-$(".feedback").setInterval(() => {
-  
-}, 5000);
+    var value = $(this).siblings(".description").val();
+    var time = $(this).parent().attr("id");
+
+    localStorage.setItem(time, value);
+
+    // Feedback section of DOM given "show" class for 5 seconds using setTimeout.
+
+    $(".feedback").addClass("show");
+
+    setTimeout(function () {
+
+      $(".feedback").removeClass("show");
+    }, 5000)
+
+  })
 
 })
 
+// Checks the hour every 15 seconds to make sure color coordination is correct.
 
-});
+setInterval(hourChecker, 15000)
 
+// hourChecker applies correct class to each time-block using a for loop (.each). Depends on if the current hour matches or is before/after the time block. Takes the time-block id selector and splits it at the "-", in order to isolate the string with the hour number. 
 
+function hourChecker() {
 
+  var currentHour = dayjs().format("HH");
 
+  $(".time-block").each(function () {
+    var blockHour = $(this).attr("id").split("-")[1];
+    if (currentHour > blockHour) {
+      $(this).addClass("past");
+      $(this).removeClass("present")
+      $(this).removeClass("future")
+    } else if (currentHour == blockHour) {
+      $(this).addClass("present");
+      $(this).removeClass("future");
+      $(this).removeClass("past");
+    } else {
+      $(this).addClass("future");
+      $(this).removeClass("past");
+      $(this).removeClass("present");
+    }
+  })
+}
 
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
+// Grabs the description of the timeblock from local storage. Ensures text stays after refresh. 
 
+$(".time-block").each(function () {
+  $(this).children(".description").val(localStorage.getItem($(this).attr("id")))
+})
 
+// Initializes hourChecker. Then the interval above checks the hour every 15 seconds.  
 
-// <div id="hour-10" class="row time-block">
-//         <div class="col-2 col-md-1 hour text-center py-3">10AM</div>
-//         <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
-//         <button class="btn saveBtn col-2 col-md-1" aria-label="save">
-//           <i class="fas fa-save" aria-hidden="true"></i>
-//         </button>
-//       </div>
+hourChecker();
+
+// Clock function. Updates the time on the DOM every second using setInterval above. 
+
+function clockTick() {
+  $("#currentDay").text(dayjs());
+}
