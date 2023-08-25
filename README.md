@@ -4,14 +4,17 @@
 
 This assignment had us tackle 3rd Party APIs. Last week we used integrated web APIs included in the browser and JS. This week, we used jQuery, dayJS, and bootstrap to make a DOM element that is dynamically rendered based on the time of day. 
 
+![Demo gif of the work planner](/Untitled_%20Aug%2024,%202023%2010_05%20PM.gif)
+
+Above is a demo of the planner, and below you'll find the User Story and Acceptance Criteria for the assignment. 
 
 ```
-### User Story
+User Story
 AS AN employee with a busy schedule
 I WANT to add important events to a daily planner
 SO THAT I can manage my time effectively
-``````
-``````
+```
+```
 Acceptance Criteria
 GIVEN I am using a daily planner to create a schedule
 WHEN I open the planner
@@ -26,4 +29,9 @@ WHEN I click the save button for that time block
 THEN the text for that event is saved in local storage
 WHEN I refresh the page
 THEN the saved events persist
-``````
+```
+
+## Credits 
+Wanted to give a massive shout out to my tutor this week, Eric Sayer. He helped guide me through writing the for loops necessary to dynamically apply the class selectors to the appropriate DOM elements. 
+
+Thanks for reading! Enjoy! 
