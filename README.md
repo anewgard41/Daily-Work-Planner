@@ -4,7 +4,10 @@
 
 This assignment had us tackle 3rd Party APIs. Last week we used integrated web APIs included in the browser and JS. This week, we used jQuery, dayJS, and bootstrap to make a DOM element that is dynamically rendered based on the time of day. 
 
+Here's the link to the deployed application: https://anewgard41.github.io/Daily-Work-Planner/
+
 ![Demo gif of the work planner](/Untitled_%20Aug%2024,%202023%2010_05%20PM.gif)
+
 
 Above is a demo of the planner, and below you'll find the User Story and Acceptance Criteria for the assignment. 
 
